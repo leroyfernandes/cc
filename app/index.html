@@ -26,6 +26,23 @@
 
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
+    <div class="container">
+      <div ng-controller="FirstCtrl">
+        <!-- <input type="text" ng-model="data.message"> -->
+        <h3>{{data.message}}</h3> 
+      </div>
+      <div ng-controller="CurrencyCtrl">
+        <input type="text" ng-model="currencyFilterByName">
+        <ul>
+          <li ng-repeat="currency in currencies | filter:currencyFilterByName">
+            <span>{{ currency.name }}</span> / <span>{{ currency.code }}</span> / <span>{{ currency.rate }}</span>
+          </li>
+          <!-- <li ng-repeat="(key, value) in currencies | filter:currencyFilterByName">
+            <span>{{ currencyNames[key] }}</span> / <span>{{ key }}</span> / <span>{{value}}</span>
+          </li> -->
+        </ul>
+      </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -58,6 +75,7 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/FirstCtrl.js"></script>
         <!-- endbuild -->
 </body>
 </html>

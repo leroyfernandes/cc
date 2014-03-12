@@ -8,7 +8,7 @@ angular.module('ccApp', [
 ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/a', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
