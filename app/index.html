@@ -18,6 +18,16 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+
+    <style type="text/css">
+      .currency{
+        border: 1px solid #333;
+        margin: 5px;
+        float: left;
+        width: 19%;
+        list-style: none;
+      }
+    </style>
   </head>
   <body ng-app="ccApp">
     <!--[if lt IE 7]>
@@ -34,8 +44,8 @@
       <div ng-controller="CurrencyCtrl">
         <input type="text" ng-model="currencyFilterByName">
         <ul>
-          <li ng-repeat="currency in currencies | filter:currencyFilterByName">
-            <span>{{ currency.name }}</span> / <span>{{ currency.code }}</span> / <span>{{ currency.rate }}</span>
+          <li class="currency" ng-repeat="currency in currencies | filter:currencyFilterByName">
+            <span class="currency-name">{{ currency.name }}</span> / <span class="currency-code">{{ currency.code }}</span> / <span  class="currency-rate">{{ currency.rate }}</span>
           </li>
           <!-- <li ng-repeat="(key, value) in currencies | filter:currencyFilterByName">
             <span>{{ currencyNames[key] }}</span> / <span>{{ key }}</span> / <span>{{value}}</span>
