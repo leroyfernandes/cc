@@ -21,13 +21,17 @@ angular.module('ccApp').controller('CurrencyCtrl', ['$scope', '$http', function(
   var currencies = [],
     i;
 
+  /*var toFixed = function(value, precision) {
+    var power = Math.pow(10, precision || 0);
+    return String(Math.round(value * power) / power);
+  };*/
+
   for (i in currencyRates) {
     if (currencyRates.hasOwnProperty(i)) {
       var currencyCode = i,
       currencyFullName = currencyNames[currencyCode],
       currencyRate = currencyRates[currencyCode];
 
-      console.log({'code': currencyCode, 'rate': currencyRate, 'name': currencyFullName });
       currencies.push({'code': currencyCode, 'rate': currencyRate, 'name': currencyFullName });
     }
   };

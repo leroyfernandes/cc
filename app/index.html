@@ -19,13 +19,90 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
+    <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
     <style type="text/css">
-      .currency{
-        border: 1px solid #333;
-        margin: 5px;
-        float: left;
-        width: 19%;
+
+      ul{
+        padding: 0;
+        margin: 0;
+      }
+
+      .currency-block{
         list-style: none;
+        padding: 5px;
+      }
+
+      .currency{
+        background: #fcfcfc; /* Old browsers */
+        background: -moz-linear-gradient(45deg,  #fcfcfc 0%, #f4f4f4 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#fcfcfc), color-stop(100%,#f4f4f4)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(45deg,  #fcfcfc 0%,#f4f4f4 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(45deg,  #fcfcfc 0%,#f4f4f4 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(45deg,  #fcfcfc 0%,#f4f4f4 100%); /* IE10+ */
+        background: linear-gradient(45deg,  #fcfcfc 0%,#f4f4f4 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#f4f4f4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+
+
+        height: 175px;
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .currency span{
+        display: block;
+      }
+
+      .currency span.currency-name{
+        color: #777;
+        font-family: Dosis, Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .currency span.currency-code{
+        bottom: 55px;
+        font-size: 1.5em;
+        font-family: Dosis, Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        position: absolute;
+        text-transform: uppercase;
+      }
+
+      .currency span.currency-rate{
+        bottom: -5px;
+        font-size: 4em;
+        font-family: Dosis, Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        position: absolute;
+        text-transform: uppercase;
+      }
+
+      @media (min-width: 100px){
+        .currency{
+          height: 235px;
+        }
+      }
+
+      @media (min-width: 768px){
+        .currency{
+          height: 225px;
+        }
+      }
+
+      @media (min-width: 992px){
+        .currency{
+          height: 215px;
+        }
+      }
+
+      @media (min-width: 1200px){
+        .currency{
+          height: 175px;
+        }
       }
     </style>
   </head>
@@ -37,20 +114,23 @@
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
     <div class="container">
-      <div ng-controller="FirstCtrl">
-        <!-- <input type="text" ng-model="data.message"> -->
-        <h3>{{data.message}}</h3> 
+      <div class="row">
+        <div ng-controller="FirstCtrl">
+          <!-- <input type="text" ng-model="data.message"> -->
+          <h3>{{data.message}}</h3> 
+        </div>
       </div>
-      <div ng-controller="CurrencyCtrl">
-        <input type="text" ng-model="currencyFilterByName">
-        <ul>
-          <li class="currency" ng-repeat="currency in currencies | filter:currencyFilterByName">
-            <span class="currency-name">{{ currency.name }}</span> / <span class="currency-code">{{ currency.code }}</span> / <span  class="currency-rate">{{ currency.rate }}</span>
-          </li>
-          <!-- <li ng-repeat="(key, value) in currencies | filter:currencyFilterByName">
-            <span>{{ currencyNames[key] }}</span> / <span>{{ key }}</span> / <span>{{value}}</span>
-          </li> -->
-        </ul>
+      <div class="row">
+        <div ng-controller="CurrencyCtrl">
+          <input type="text" placeholder="Search" ng-model="currencyFilterByName">
+          <ul>
+            <li class="currency-block col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="currency in currencies | filter:currencyFilterByName:true">
+              <div class="currency">
+                <span class="currency-name">{{ currency.name }}</span><span class="currency-code">{{ currency.code }}</span><span title="{{ currency.rate }}" class="currency-rate">{{ currency.rate | currency:"" }}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
