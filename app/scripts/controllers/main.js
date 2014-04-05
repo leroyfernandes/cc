@@ -46,7 +46,9 @@ angular.module('ccApp').controller('CurrencyCtrl', ['$scope', '$http', function(
 
   $scope.currencies = currencies;
 
-
+  $scope.baseCurrency = {
+    currencyCodeC: "USD"
+  };
 
   /*
   $http({
