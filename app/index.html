@@ -130,7 +130,8 @@
       <div class="row">
         <div ng-controller="CurrencyCtrl">
           <input type="text" placeholder="Currency to convert" ng-model="currencyValue">
-          <select ng-model="baseCurrency.curencyCodeC" ng-options="currency.code as currency.name for currency in currencies"></select>
+          <select ng-model="baseCurrency.currencyCodeC" ng-options="currency.code as currency.name for currency in currencies"></select>
+
           <input type="text" placeholder="Search" ng-model="currencyFilterByName">
           <ul>
             <li class="currency-block col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="currency in currencies | filter:currencyFilterByName">
