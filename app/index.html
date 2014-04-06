@@ -128,11 +128,14 @@
         </div>
       </div>
       <div class="row">
-        <div ng-controller="CurrencyCtrl">
+        <div ng-controller="CurrencySelectorCtrl">
           <input type="text" placeholder="Currency to convert" ng-model="currencyValue">
           <select ng-model="baseCurrency.currencyCodeC" ng-options="currency.code as currency.name for currency in currencies"></select>
 
           <input type="text" placeholder="Search" ng-model="currencyFilterByName">
+        </div>
+
+        <div ng-controller="CurrencyCtrl">
           <ul>
             <li class="currency-block col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="currency in currencies | filter:currencyFilterByName">
               <div class="currency">
